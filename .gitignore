@@ -1,3 +1,20 @@
-.DS_Store
-node_modules/
+# Xcode
+*.xcuserstate
+*.xcworkspace/xcuserdata
+DerivedData/
+build/
+*.DS_Store
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Swift Package Manager
+.build/
+Package.resolved
+
+# Other
+.idea/
 *.log
