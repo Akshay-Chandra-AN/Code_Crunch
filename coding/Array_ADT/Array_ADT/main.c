@@ -38,6 +38,8 @@ void insert(struct Array *Arr, int index, int value)
     }
 }
 
+void delete(struct Array arr);
+
 int main(int argc, const char * argv[]) {
     struct Array A1 = {{2,4,3,2},4,10};
     //append(A1,3,22);
