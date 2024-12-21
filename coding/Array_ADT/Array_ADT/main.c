@@ -38,7 +38,17 @@ void insert(struct Array *Arr, int index, int value)
     }
 }
 
-void delete(struct Array arr);
+void delete(struct Array *arr, int index)
+{
+    if(index >= 0 && index < arr->length)  //make sure this is properly defined
+    {
+        for(int i=index;i<arr->length-1;i++)
+        {
+            arr->A[i]=arr->A[i+1];
+        }
+        arr->length--;
+    }
+}
 
 int main(int argc, const char * argv[]) {
     struct Array A1 = {{2,4,3,2},4,10};
@@ -48,6 +58,10 @@ int main(int argc, const char * argv[]) {
     append(&A1,66);             //OP: 2 4 3 23 2 66
     insert(&A1,7 , 23);         //OP: invalid, as the length of array is small
     display(A1);
+    printf("\n");
+    delete(&A1, 5);
+    display(A1);
+
     
     return 0;
 }
