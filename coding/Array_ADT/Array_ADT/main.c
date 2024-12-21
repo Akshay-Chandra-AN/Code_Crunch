@@ -50,6 +50,41 @@ void delete(struct Array *arr, int index)
     }
 }
 
+int LinearSearch(struct Array *arr, int key)
+{
+    for(int i=0;i<arr->length;i++)
+    {
+        if(key==arr->A[i])
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+void swap(int *p,int *q)
+{
+    int temp;
+    temp = *p;
+    *p = *q;  //initial mistake was p = q; changes the local pointer p to point to the same location as q, but this does not affect the actual pointer p passed to the function.
+    *q= temp;
+}
+
+int ImprovedLinearSearch(struct Array *arr, int key)
+{
+    for(int i=0;i<arr->length;i++)
+    {
+        if(key==arr->A[i])
+        {
+            swap(&arr->A[i],&arr->A[0]);   //this first to head improvement method.
+            //can use trasnposition method where ,swap(&arr->A[i],&arr->A[i-1]).
+            return i;
+        }
+    }
+    return -1;
+}
+
 int main(int argc, const char * argv[]) {
     struct Array A1 = {{2,4,3,2},4,10};
     //append(A1,3,22);
@@ -61,7 +96,12 @@ int main(int argc, const char * argv[]) {
     printf("\n");
     delete(&A1, 5);
     display(A1);
-
+    printf("\n");
+    printf("the index it is found at %d",ImprovedLinearSearch(&A1,23));
+    printf("\n");
+    display(A1);
+    printf("\n");
+    printf("the index it is found at %d",LinearSearch(&A1,23));
     
     return 0;
 }
