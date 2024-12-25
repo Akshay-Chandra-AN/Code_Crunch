@@ -85,6 +85,8 @@ int ImprovedLinearSearch(struct Array *arr, int key)
     return -1;
 }
 
+int BinarySearch(struct Array arr,int )
+
 int main(int argc, const char * argv[]) {
     struct Array A1 = {{2,4,3,2},4,10};
     //append(A1,3,22);
