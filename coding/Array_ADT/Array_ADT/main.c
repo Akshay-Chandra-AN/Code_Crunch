@@ -85,9 +85,33 @@ int ImprovedLinearSearch(struct Array *arr, int key)
     return -1;
 }
 
-int BinarySearch(struct Array arr,int )
+int BinarySearch(struct Array arr,int key)
+{
+    int low = 0;
+    int high = arr.length-1;
+    int mid;
+    
+    while(low<=high)
+    {
+        mid = (high + low)/2;
+        if(key == arr.A[mid])
+            return mid;
+        else if(key < arr.A[mid])
+            high = mid-1;
+        else if(key > arr.A[mid])
+            low = mid+1;
+        else{
+            printf("element not found");
+        }
+    }
+    
+    
+    //printf("%d",high);
+    return 0;
+}
 
 int main(int argc, const char * argv[]) {
+    
     struct Array A1 = {{2,4,3,2},4,10};
     //append(A1,3,22);
     //append(&A1,66);
@@ -104,6 +128,10 @@ int main(int argc, const char * argv[]) {
     display(A1);
     printf("\n");
     printf("the index it is found at %d",LinearSearch(&A1,23));
+     
+    //Binary Search
+    struct Array A2 = {{11,22,33,44,55,66,77,88,99,222},10,10};
+    printf("Element found at index %d ",BinarySearch(A2, 22));
     
     return 0;
 }
