@@ -177,6 +177,15 @@ void Reverse(struct Array *arr)     //Reverse using auxiliary/extra array
     }
 }
 
+void Reverse2(struct Array *arr)
+{
+    printf("\n Reversing the array\n");
+    int i,j;
+    for(i=0,j=arr->length-1;i<j;i++,j--)
+    {
+        swap(&arr->A[i],&arr->A[j]);
+    }
+}
 
 int main(int argc, const char * argv[]) {
     
@@ -213,6 +222,9 @@ int main(int argc, const char * argv[]) {
     
     
     Reverse(&A2);
+    display(A2);
+    
+    Reverse2(&A2);
     display(A2);
     return 0;
     
