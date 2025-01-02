@@ -110,6 +110,74 @@ int BinarySearch(struct Array arr,int key)
     return 0;
 }
 
+int get(struct Array arr, int key)
+{
+    for(int i=0;i<=arr.length;i++)
+    {
+        if(key==arr.A[i])
+            return i;
+    }
+    return -1;
+}
+
+int set(struct Array *arr, int index, int key)
+{
+    if(index >= 0 || index <arr->length)
+    {
+        for(int i=0;i<=arr->length;i++)
+        {
+            if(i==index)
+            {
+                return arr->A[i]=key;
+            }
+        }
+    }
+    return -1;
+}
+
+int max(struct Array arr)
+{
+    int m = arr.A[0];
+    for(int i=0;i<arr.length;i++)
+    {
+        if(arr.A[i]>m)
+        {
+            m=arr.A[i];
+        }
+    }
+    return m;
+}
+
+int sum(struct Array arr)
+{
+    int sum = 0;
+    for(int i=0;i<arr.length;i++)
+    {
+        sum += arr.A[i];
+    }
+    return sum;
+}
+
+void Reverse(struct Array *arr)     //Reverse using auxiliary/extra array
+{
+    printf("\n Reversing the array\n");
+    int *b;
+    int i,j;
+    
+    b =(int *)malloc(arr->length*sizeof(int));
+    
+    for(i=arr->length-1,j=0;i>=0;i--,j++)
+    {
+        b[j]=arr->A[i];
+    }
+    
+    for(i=0;i<arr->length;i++)
+    {
+        arr->A[i]=b[i];
+    }
+}
+
+
 int main(int argc, const char * argv[]) {
     
     struct Array A1 = {{2,4,3,2},4,10};
@@ -133,5 +201,19 @@ int main(int argc, const char * argv[]) {
     struct Array A2 = {{11,22,33,44,55,66,77,88,99,222},10,10};
     printf("Element found at index %d ",BinarySearch(A2, 22));
     
+    printf("element index is %d\n",get(A2, 55));
+    
+    set(&A2,4,555);
+    display(A2);
+    
+    
+    printf("\nmax element is %d\n",max(A2));
+    
+    printf("sum element is %d\n",sum(A2));
+    
+    
+    Reverse(&A2);
+    display(A2);
     return 0;
+    
 }
