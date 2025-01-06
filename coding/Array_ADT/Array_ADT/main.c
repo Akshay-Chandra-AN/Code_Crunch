@@ -14,6 +14,7 @@ void display(struct Array A)
     {
         printf("%d ",A.A[i]);
     }
+    printf("\n");
 }
 
 void append(struct Array *Arr,int value)
@@ -187,6 +188,82 @@ void Reverse2(struct Array *arr)
     }
 }
 
+void nextline(void)
+{
+    printf("\n\n");
+}
+
+// This needs to be still fixed insert_sortedarray
+void insert_sortedarray(struct Array *arr, int key)
+{
+    int i= arr->length-1;
+    if(arr->length==arr->size)
+        return;
+    while (i >= 0 && arr->A[i] > key) {
+           arr->A[i + 1] = arr->A[i];
+           i--;
+       }
+    arr->A[i+1]=key;
+    arr->length++;
+}
+
+int isSorted(struct Array arr)
+{
+    for(int i = 0; i < arr.length - 1; i++)  // Iterate from index 0 to the second-to-last index
+    {
+        if(arr.A[i] > arr.A[i+1])  // If the current element is greater than the next element
+            return 0;  // Return 0, meaning the array is **not sorted**
+    }
+    return 1;  // Return 1, meaning the array is **sorted** in ascending order
+}
+
+ 
+//This function rearranges negative and positive value in an array
+void Rearrange(struct Array *arr)
+{
+    int i = 0;  // Start index from the left of the array
+    int j = arr->length - 1;  // Start index from the right of the array
+    
+    while (i < j)  // Continue looping as long as i is less than j
+    {
+        // Find the first positive number from the left side
+        while (arr->A[i] < 0) i++;  // Move i to the right until you find a non-negative number
+        
+        // Find the first negative number from the right side
+        while (arr->A[j] >= 0) j--;  // Move j to the left until you find a negative number
+        
+        // If i < j, swap the elements at i and j
+        if (i < j) {
+            swap(&arr->A[i], &arr->A[j]);  // Swap the negative and positive elements
+        }
+    }
+}
+
+struct Array * Merge(struct Array arr,struct Array arr1)
+{
+    int i,k,j;
+    i=k=j=0;
+    struct Array *arr3;
+    arr3 = (struct Array *)malloc(sizeof(struct Array));
+    
+    while(i<arr.length && j<arr1.length)
+    {
+        if(arr.A[i]<arr.A[j])
+            arr3->A[k++]=arr.A[i++];
+        else
+            arr3->A[k++]=arr1.A[j++];
+    }
+    
+    for(;i<arr.length;i++)
+        arr3->A[k++]=arr.A[i];
+    for(;i<arr1.length;i++)
+        arr3->A[k++]=arr1.A[i];
+    
+    arr3->length = arr.length+arr1.length;
+    arr3->size=10;
+    return arr3;
+}
+
 int main(int argc, const char * argv[]) {
     
     struct Array A1 = {{2,4,3,2},4,10};
@@ -226,6 +303,28 @@ int main(int argc, const char * argv[]) {
     
     Reverse2(&A2);
     display(A2);
-    return 0;
     
-}
+    nextline();
+    
+    struct Array A3 = {{1,22,33,24,55,66,77,88,99,222},10,16};
+    //insert_sortedarray(&A3,102);
+    //this is giving garbage value after insertion needs to be looked into
+    //display(A3);
+    
+    //Checking if array is sorted or not
+    printf("sorted %d \n",isSorted(A3));
+    
+    
+    //Rearraning array into positive and negative
+    struct Array A4 = {{1,-9,3,6,-8},5,7};
+    Rearrange(&A4);
+    display(A4);
+    
+    
+    //Merging of array
+    struct Array arr5={{2,9,21,28,35},5,10};
+    struct Array arr6={{2,3,16,18,28},5,10};
+    struct Array *arr33;
+    arr33=Merge(arr5,arr6);
+    display(*arr33);
+    return 0;}
