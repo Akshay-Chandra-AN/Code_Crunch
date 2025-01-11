@@ -22,6 +22,6 @@ int missing_sorted_natural(struct Array arr)
 
 
 int main(int argc, const char * argv[]) {
-    struct Array a={{1,2,3,4,5,6,7,8,9,10},9,9};
+    struct Array a={{1,2,3,4,6,7,8,9,10},9,10};
     printf("%d\n",missing_sorted_natural(a));
 }
