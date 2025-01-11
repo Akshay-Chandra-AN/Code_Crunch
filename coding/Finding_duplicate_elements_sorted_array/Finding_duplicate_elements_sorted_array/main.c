@@ -1,14 +1,23 @@
-//
-//  main.c
-//  Finding_duplicate_elements_sorted_array
-//
-//  Created by Akshay Chandra on 11/01/25.
-//
-
+#include <stdlib.h>
 #include <stdio.h>
 
+void remove_duplicate(int *a)
+{
+    int duplicate = 0;
+    
+    for(int i=0;i<10;i++)
+    {
+        if(a[i]==a[i+1] && a[i]!=duplicate)
+        {
+            printf("%d ",a[i]);
+            duplicate = a[i];
+        }
+    }
+}
+
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    int a[]={1,2,3,3,4,5,6,7,7,7,8};
+    remove_duplicate(a);
     return 0;
 }
