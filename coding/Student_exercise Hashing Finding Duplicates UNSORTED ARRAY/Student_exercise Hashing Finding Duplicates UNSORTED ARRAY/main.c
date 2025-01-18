@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
             m=a[i];
         }
     }
-    printf("%d",m);
+    //printf("%d",m);
     
     int hash_length = m;
     int hash[hash_length];
