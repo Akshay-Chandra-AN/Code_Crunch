@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+//126. Student Challenge : Finding Duplicates in a Unsorted Array
+
 void find_duplicate(int *a,int numsize)
 {
     int count;
