@@ -30,11 +30,22 @@ int fun3 (int n)
     return 0;
 }
 
+void fun4 (int n)
+{
+    if(n>0)
+    {
+        printf("%d ",n);
+        fun4(n-1);
+        fun4(n-1);
+    }
+}
+
 
 int main(int argc, const char * argv[]) {
     int x=3;
-    // fun1(x);                 //example 1
-    //printf("%d \n",fun2(5));       //example 3
-    printf("%d \n",fun3(5));       //example 4
+    // fun1(x);                      //example 1- tail recursion
+    //printf("%d \n",fun2(5));       //example 3- head recursion
+    //printf("%d \n",fun3(5));       //ex 4 static variables in recurs
+    //fun4(3);                       //tree recursion
     return 0;
 }
