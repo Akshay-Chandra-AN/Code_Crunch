@@ -67,6 +67,6 @@ int main(int argc, const char * argv[]) {
     //printf("%d \n",fun2(5));       //example 3- head recursion
     //printf("%d \n",fun3(5));       //ex 4 static variables in recurs
     //fun4(3);                       //tree recursion example 5
-    //funA(20);                      //indirect recursion ex 6
+    funA(20);                      //indirect recursion ex 6
     return 0;
 }
