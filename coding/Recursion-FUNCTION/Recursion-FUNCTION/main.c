@@ -39,13 +39,34 @@ void fun4 (int n)
         fun4(n-1);
     }
 }
+void funB (int n );
+void funA(int n)
+{
+    if(n>0)
+    {
+        printf("%d ",n);
+        funB(n-1);
+    }
+}
+
+
+void funB (int n )
+{
+    if(n>1)
+    {
+        printf("%d ",n);
+        funA(n/2);
+    }
+}
+
 
 
 int main(int argc, const char * argv[]) {
-    int x=3;
+    //int x=3;
     // fun1(x);                      //example 1- tail recursion
     //printf("%d \n",fun2(5));       //example 3- head recursion
     //printf("%d \n",fun3(5));       //ex 4 static variables in recurs
-    //fun4(3);                       //tree recursion
+    //fun4(3);                       //tree recursion example 5
+    //funA(20);                      //indirect recursion ex 6
     return 0;
 }
