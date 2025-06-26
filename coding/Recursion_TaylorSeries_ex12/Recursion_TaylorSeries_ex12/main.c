@@ -20,7 +20,25 @@ double e(int x,int n)
     }
 }
 
-//analogy 2
+//loop (analogy 1)
+double e3(int x,int n)
+{
+    static double s=1;
+    int i;
+    double num=1;
+    double den=1;
+    
+    for(i=1;i<=n;i++)
+    {
+        num *= x;
+        den *= i;
+        s+=num/den;
+    }
+    return s;
+}
+
+
+//analogy 2 horners rule
 double e1(int x,int n)
 {
     static double s=1;
@@ -32,7 +50,7 @@ double e1(int x,int n)
 }
 
 
-//using loop
+//using loop horners rule
 double e2(int x,int n)
 {
     double s1=1;
@@ -43,9 +61,12 @@ double e2(int x,int n)
     return s1;
 }
 
+//using loop
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("%lf \n",e(1,10));
+    printf("%lf \n",e3(1,10));
     printf("%lf \n",e1(1,10));
     printf("%lf \n",e2(1,10));
     return 0;
