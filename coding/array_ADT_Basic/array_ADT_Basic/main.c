@@ -3,7 +3,7 @@
 
 struct Array
 {
-    int A[20]; //this is in stack   for array in heap --> int *A;
+    int A[10]; //this is in stack   for array in heap --> int *A;
     int size;
     int length;
 };
@@ -18,6 +18,47 @@ void display(struct Array arr)
         
 }
 
+void append(struct Array *arr, int x) //call by address -> to modify array
+{
+    //check space is there r not
+    if(arr->length < arr->size)
+        arr->A[arr->length++]= x;
+}
+
+void insert(struct Array *arr, int index, int x)
+{
+    if(index >= 0 && index <=arr->length)
+    {
+        for(int i=arr->length;i>index;i--)
+            arr->A[i]=arr->A[i-1];
+        
+        arr->A[index]=x;
+        arr->length++;
+    }
+    
+    else
+        printf("cant insert at index");
+        
+}
+
+
+int delete(struct Array *arr, int index)
+{
+    int x=0;
+    if(index >= 0 && index <=arr->length)
+    {
+        x=arr->A[index];
+        for(int i=index;i<arr->length-1;i++)
+        {
+            arr->A[i]=arr->A[i+1];
+        }
+        arr->length--;
+        return x;
+    }
+    return 0;
+}
+
+
 
 int main(int argc, const char * argv[]) {
     struct Array arr1;
@@ -30,7 +71,7 @@ int main(int argc, const char * argv[]) {
     arr.length = 0;
      */
     
-    
+    //Input the array property
     int n,i;
     printf("Enter number of num \n");    //this is the length of actual array
     scanf("%d",&n);
@@ -43,8 +84,13 @@ int main(int argc, const char * argv[]) {
     display(arr1);                        //Display the elements of array
     
     
-    struct Array arr= {{2,3,4,5},20,4};
-    display(arr);
     
+    //Array in stack
+    struct Array arr= {{2,3,4,5},10,4};
+    append(&arr, 10);
+    insert(&arr,3,321);               //insert at right index
+    insert(&arr,9,121);               //inserting at wrong index
+    delete(&arr, 0);                    //Deleting at given index
+    display(arr);
     return 0;
 }
