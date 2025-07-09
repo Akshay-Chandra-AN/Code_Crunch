@@ -87,6 +87,26 @@ int ImprovedLinearSearch(struct Array *arr,int key)  //pass by value, as you jus
     return -1;
 }
 
+int BinarySearch(struct Array arr,int key)
+{
+    int h,l,mid;
+    l = 0;
+    h = arr.length -1;
+    
+    
+    while(l<=h)
+    {
+        mid = (l+h)/2;
+        if(key==arr.A[mid])
+            return mid;
+        else if (key < arr.A[mid])         ////when key is on left side of mid, make high just before mid
+            h= mid-1;
+        else
+            l = mid+1;                     ////when key is on right side of mid, make low just after mid
+    }
+    return -1;
+}
+
 
 int main(int argc, const char * argv[]) {
     struct Array arr1;
@@ -98,24 +118,25 @@ int main(int argc, const char * argv[]) {
     arr.length = 0;                   */
     
     //Input the array property
-    int n,i;
-    printf("Enter number of num \n");    //this is the length of actual array
-    scanf("%d",&n);
-    
-    printf("enter all elements \n");     //Entering the elements of array
-    for(i=0;i<n;i++)
-        scanf("%d",&arr1.A[i]);
-    arr1.length = n;
-    display(arr1);                        //Display the elements of array
+//    int n,i;
+//    printf("Enter number of num \n");    //this is the length of actual array
+//    scanf("%d",&n);
+//    
+//    printf("enter all elements \n");     //Entering the elements of array
+//    for(i=0;i<n;i++)
+//        scanf("%d",&arr1.A[i]);
+//    arr1.length = n;
+//    display(arr1);                        //Display the elements of array
     
     
     //Array in stack
     struct Array arr= {{2,3,4,5},10,4};
-    append(&arr, 10);
-    insert(&arr,3,321);               //insert at right index
-    insert(&arr,9,121);               //inserting at wrong index
-    delete(&arr, 0);                    //Deleting at given index
-    printf("Search result %d\n",ImprovedLinearSearch(&arr, 4));
+//    append(&arr, 10);
+//    insert(&arr,3,321);               //insert at right index
+//    insert(&arr,9,121);               //inserting at wrong index
+//    delete(&arr, 0);                    //Deleting at given index
+//    printf("Search result %d\n",ImprovedLinearSearch(&arr, 4));
+    printf("Search result %d\n",BinarySearch(arr, 4));
     display(arr);
     return 0;
 }
