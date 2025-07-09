@@ -107,36 +107,56 @@ int BinarySearch(struct Array arr,int key)
     return -1;
 }
 
+int RecursiveBinary(int a[],int l, int h, int key)      //recursive way if binary search
+{
+    int mid;
+    
+    if(l<=h)
+    {
+        mid = (l+h)/2;
+        if(key==a[mid])
+            return mid;
+        else if (key < a[mid])
+            RecursiveBinary(a,l,mid-1,key);
+        else
+            RecursiveBinary(a,mid+1,h,key);
+    }
+    return -1;
+}
+
 
 int main(int argc, const char * argv[]) {
     struct Array arr1;
     
-    /*****this part of code is array in heap *****
-    printf("enter size of an array");
-    scanf("%d",&arr.size);
-    arr.A=(int *)malloc(arr.size * sizeof(int));
-    arr.length = 0;                   */
+    //******this part of code is array in heap****************
+    //note : in struct make int *A, instead of int A[20]
+//    printf("enter size of an array");
+//    scanf("%d",&arr1.size);
+//    arr1.A=(int *)malloc(arr1.size * sizeof(int));
+//    arr1.length = 0;
     
-    //Input the array property
-//    int n,i;
-//    printf("Enter number of num \n");    //this is the length of actual array
-//    scanf("%d",&n);
-//    
-//    printf("enter all elements \n");     //Entering the elements of array
-//    for(i=0;i<n;i++)
-//        scanf("%d",&arr1.A[i]);
-//    arr1.length = n;
-//    display(arr1);                        //Display the elements of array
+    //*******Input the array property************
+    int n,i;
+    printf("Enter number of num \n");    //this is the length of actual array
+    scanf("%d",&n);
+    
+    printf("enter all elements \n");     //Entering the elements of array
+    for(i=0;i<n;i++)
+        scanf("%d",&arr1.A[i]);
+    arr1.length = n;
+    display(arr1);                        //Display the elements of array
     
     
-    //Array in stack
+    //***********Array in stack*******************
     struct Array arr= {{2,3,4,5},10,4};
-//    append(&arr, 10);
-//    insert(&arr,3,321);               //insert at right index
-//    insert(&arr,9,121);               //inserting at wrong index
-//    delete(&arr, 0);                    //Deleting at given index
-//    printf("Search result %d\n",ImprovedLinearSearch(&arr, 4));
-    printf("Search result %d\n",BinarySearch(arr, 4));
+    append(&arr, 10);
+    insert(&arr,3,321);               //insert at right index
+    insert(&arr,9,121);               //inserting at wrong index
+    delete(&arr, 0);                    //Deleting at given index
+    printf("Search result %d\n",ImprovedLinearSearch(&arr, 4));           //Linear Search
+    printf("Search result %d\n",ImprovedLinearSearch(&arr, 4));           //Improved Linear Search
+    printf("Search result %d\n",BinarySearch(arr, 5));                      //Binary Search
+    printf("Search result %d\n",RecursiveBinary(arr.A,0,arr.length, 99));   //Recursive Binary Search
     display(arr);
     return 0;
 }
