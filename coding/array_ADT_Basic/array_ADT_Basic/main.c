@@ -3,7 +3,7 @@
 
 struct Array
 {
-    int A[10]; //this is in stack   for array in heap --> int *A;
+    int A[10]; //this is in stack now   for array in heap --> int *A;
     int size;
     int length;
 };
@@ -14,8 +14,6 @@ void display(struct Array arr)
     printf("\n Elements are ");
     for(i = 0;i<arr.length;i++)
         printf("%d ",arr.A[i]);
-    
-        
 }
 
 void append(struct Array *arr, int x) //call by address -> to modify array
@@ -35,12 +33,9 @@ void insert(struct Array *arr, int index, int x)
         arr->A[index]=x;
         arr->length++;
     }
-    
     else
         printf("cant insert at index");
-        
 }
-
 
 int delete(struct Array *arr, int index)
 {
@@ -58,18 +53,49 @@ int delete(struct Array *arr, int index)
     return 0;
 }
 
+int LinearSearch(struct Array arr,int key)  //pass by value, as you just need to find  and not modify
+{
+    int i;
+    for(i=0;i<arr.length;i++)
+    {
+        if(key==arr.A[i])
+            return i;
+    }
+    return -1;
+}
+
+void swap(int *x, int *y)
+{
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+int ImprovedLinearSearch(struct Array *arr,int key)  //pass by value, as you just need to find  and not modify
+{
+    int i;
+    for(i=0;i<arr->length;i++)
+    {
+        if(key==arr->A[i])
+        {
+            //swap(&arr->A[i],&arr->A[i-1]);      //option 1 : swap values and bring to front by 1 index
+            swap(&arr->A[i],&arr->A[0]);          //option 2 : swap and bring to index 0
+            return i;
+        }
+    }
+    return -1;
+}
 
 
 int main(int argc, const char * argv[]) {
     struct Array arr1;
     
     /*****this part of code is array in heap *****
-     
     printf("enter size of an array");
     scanf("%d",&arr.size);
     arr.A=(int *)malloc(arr.size * sizeof(int));
-    arr.length = 0;
-     */
+    arr.length = 0;                   */
     
     //Input the array property
     int n,i;
@@ -80,9 +106,7 @@ int main(int argc, const char * argv[]) {
     for(i=0;i<n;i++)
         scanf("%d",&arr1.A[i]);
     arr1.length = n;
-    
     display(arr1);                        //Display the elements of array
-    
     
     
     //Array in stack
@@ -91,6 +115,7 @@ int main(int argc, const char * argv[]) {
     insert(&arr,3,321);               //insert at right index
     insert(&arr,9,121);               //inserting at wrong index
     delete(&arr, 0);                    //Deleting at given index
+    printf("Search result %d\n",ImprovedLinearSearch(&arr, 4));
     display(arr);
     return 0;
 }
