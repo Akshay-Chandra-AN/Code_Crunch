@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=macosx
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:001_Hello_World.elf,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World.elf,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:001_Hello_World.elf,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World.elf,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Hello
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World.elf/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World/activeLaunchMode=debug
