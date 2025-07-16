@@ -145,6 +145,31 @@ void reverse2(struct Array *arr)
     }
 }
 
+void insertsort(struct Array *arr, int x)
+{
+    if(arr->length==arr->size)
+        return;
+    int i=arr->length-1;
+    while(i>=0 && arr->A[i]>x)
+    {
+        arr->A[i+1]=arr->A[i];
+        i--;
+    }
+    arr->A[i+1]=x;
+    arr->length++;
+}
+
+int isSorted(struct Array arr)
+{
+    int i;
+    for(i=0;i<arr.length-1;i++)
+    {
+        if(arr.A[i]>arr.A[i+1])
+            return 0;
+    }
+    return 1;
+}
+
 int main(int argc, const char * argv[]) {
     struct Array arr1;
     
@@ -168,7 +193,7 @@ int main(int argc, const char * argv[]) {
     
     
     //***********Array in stack*******************
-    struct Array arr= {{2,3,4,5},10,4};
+    struct Array arr= {{2,3,4,5,77,555},10,6};
 //    append(&arr, 10);
 //    insert(&arr,3,321);               //insert at right index
 //    insert(&arr,9,121);               //inserting at wrong index
@@ -180,8 +205,15 @@ int main(int argc, const char * argv[]) {
 //    display(arr);
     
     //Reversing an array 2 methods
-    reverse(&arr);
-    reverse2(&arr);
-    display(arr);
+//    reverse(&arr);
+//    reverse2(&arr);
+//    display(arr);
+    
+    //Insert Sort
+//    insertsort(&arr, 2.4);
+//    display(arr);
+    
+    //Array is sorted or not
+    printf("%d\n",isSorted(arr));
     return 0;
 }
