@@ -3,7 +3,7 @@
 
 struct Array
 {
-    int A[10]; //this is in stack now   for array in heap --> int *A;
+    int A[13]; //this is in stack now   for array in heap --> int *A;
     int size;
     int length;
 };
@@ -170,6 +170,44 @@ int isSorted(struct Array arr)
     return 1;
 }
 
+void rearrange(struct Array *arr)
+{
+    int i,j;
+    i=0;
+    j=arr->length-1;
+    
+    while (i<j)
+    {
+        while(arr->A[i]<0) i++;
+        while(arr->A[j]>=0) j--;
+        if(i<j) swap(&arr->A[i],&arr->A[j]);
+    }
+}
+
+struct Array* sortedMerge(struct Array *arr1, struct Array *arr2)
+{
+    int i,j,k;
+    i=k=j=0;
+    
+    struct Array *arr3=(struct Array *)malloc(sizeof(struct Array));
+    //arr3->A = (int *)malloc(arr3->size * sizeof(int));
+    while (i<arr1->length && j<arr2->length)
+    {
+        if(arr1->A[i]<arr2->A[j])
+            arr3->A[k++]=arr1->A[i++];
+        else
+            arr3->A[k++]=arr2->A[j++];
+    }
+    
+    for(;i<arr1->length;i++)
+        arr3->A[k++]=arr1->A[i];
+    for(;j<arr2->length;j++)
+        arr3->A[k++]=arr2->A[j];
+    arr3->length=arr1->length+arr2->length;
+    arr3->size=200;
+    return arr3;
+}
+
 int main(int argc, const char * argv[]) {
     struct Array arr1;
     
@@ -214,6 +252,17 @@ int main(int argc, const char * argv[]) {
 //    display(arr);
     
     //Array is sorted or not
-    printf("%d\n",isSorted(arr));
+//    printf("%d\n",isSorted(arr));
+    
+    //-ve of lhs rearrange
+//    struct Array arr2= {{2,3,-4,5,77,-555},10,6};
+//    rearrange(&arr2);
+//    display(arr2);
+    
+    //Merge 2 sorted array
+//    struct Array arr3= {{2,3,4,5,77,555},10,6};
+//    struct Array arr4= {{4,6,8,10,177,255},10,6};
+//    struct Array *arr5 = sortedMerge(&arr3, &arr4);
+//    display(*arr5);
     return 0;
 }
