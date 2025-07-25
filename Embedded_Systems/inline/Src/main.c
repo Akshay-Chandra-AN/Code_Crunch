@@ -24,12 +24,15 @@
 
 int main(void)
 {
-	__asm volatile("LDR R1,=#0x20000100");
-	__asm volatile("LDR R2,=#0x20000104");
-	__asm volatile("LDR R0,[R1]");
-	__asm volatile("LDR R1,[R2]");
-	__asm volatile("ADD R0,R0,R1");
-	__asm volatile("STR R0,[R2]");
+//	__asm volatile("LDR R1,=#0x20000100");
+//	__asm volatile("LDR R2,=#0x20000104");
+//	__asm volatile("LDR R0,[R1]");
+//	__asm volatile("LDR R1,[R2]");
+//	__asm volatile("ADD R0,R0,R1");
+//	__asm volatile("STR R0,[R2]");
+
+	int val = 10;
+	__asm volatile("MOV R0, %0" : :"r"(val));
 
 	for(;;);
 }
