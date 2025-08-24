@@ -4,12 +4,12 @@
 typedef struct node_s
 {
     struct node_s *next;
-    char data[40];
+    int data;
 }node;
 
 node *head = NULL;
 
-int init(char *data)
+int init(int data)
 {
     printf("%p\n", head);   //memory is not allocated hence if i print, head = 0
     
@@ -37,16 +37,16 @@ int init(char *data)
     //is nothing to point to right now
     head->next = NULL;
     //now copy the data
-    memcpy(head->data, data, strlen(data));
+    head->data = data;
     
     //now print, if everything is working as expected
     printf("if address is same as above, working as expected %p\n",head);
-    printf("%s\n", head->data);
+    printf("%d\n", head->data);
     
     return 0;
 }
 
-int add(char *data)
+int add(int data)
 {
     if(!data) //make sure data is not null, if it is then no point in adding that as a node
     {
@@ -62,9 +62,36 @@ int add(char *data)
     }
     
     n->next = head;
-    memcpy(n->data, data, strlen(data));
+    n->data = data;
     head = n;
     
+    return 0;
+}
+
+int add_at_end(int data)
+{
+    //have a cursor first
+    node *cur = head;
+    node *n = malloc(sizeof(node));
+    if(!n) //if memory is allocated then it is not null
+    {
+        printf("allocation failed\n");
+        return -1;
+    }
+    
+    n->next = NULL;
+    n->data = data;
+    
+    
+    for(cur = head;
+        cur->next != NULL;
+        cur = cur->next)
+    {
+        //nothing to do,
+        //just taking cursor to end of the list
+    }
+    
+    cur->next = n;
     return 0;
 }
 
@@ -74,14 +101,15 @@ void traverse(void)
         cursor != NULL;
         cursor = cursor->next)
     {
-        printf("list : %s\n", cursor->data);
+        printf("list : %d\n", cursor->data);
     }
 }
 
 int main(int argc, const char * argv[]) {
-    init("dello");
-    add("akshay");
-    add("chandra");
+    init(10);
+    add_at_end(20);
+    add_at_end(30);
+    add_at_end(320);
     traverse();
     
     
