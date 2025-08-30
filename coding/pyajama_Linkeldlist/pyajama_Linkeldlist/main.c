@@ -105,11 +105,42 @@ void traverse(void)
     }
 }
 
+int exists(int data)
+{
+    for(node *cursor = head;
+        cursor!=NULL;
+        cursor = cursor->next)
+    {
+        if(cursor->data == data)
+            return 1;
+    }
+    return 0;
+}
+
+int delete(int data)
+{
+    for(node *p = NULL, *c = head;
+        c!=NULL;
+        p=c,c=c->next)
+    {
+        if(c->data == data)
+        {
+            p->next = c->next;
+            printf("deleted %d",data);
+            free(c);
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
     init(10);
     add_at_end(20);
     add_at_end(30);
     add_at_end(320);
+    //printf("%d",exists(120));
+    delete(30);
     traverse();
     
     
