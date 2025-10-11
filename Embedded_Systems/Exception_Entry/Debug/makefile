@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := fault_gen
+BUILD_ARTIFACT_NAME := Exception_Entry
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-fault_gen.elf \
+Exception_Entry.elf \
 
 MAP_FILES += \
-fault_gen.map \
+Exception_Entry.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-fault_gen.list \
+Exception_Entry.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: fault_gen.elf secondary-outputs
+main-build: Exception_Entry.elf secondary-outputs
 
 # Tool invocations
-fault_gen.elf fault_gen.map: $(OBJS) $(USER_OBJS) /Users/akshay/Development/Code_Crunch/Embedded_Systems/fault_gen/STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "fault_gen.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/akshay/Development/Code_Crunch/Embedded_Systems/fault_gen/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fault_gen.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Exception_Entry.elf Exception_Entry.map: $(OBJS) $(USER_OBJS) /Users/akshay/Development/Code_Crunch/Embedded_Systems/Exception_Entry/STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Exception_Entry.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/akshay/Development/Code_Crunch/Embedded_Systems/Exception_Entry/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Exception_Entry.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-fault_gen.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "fault_gen.list"
+Exception_Entry.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Exception_Entry.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) default.size.stdout fault_gen.elf fault_gen.list fault_gen.map
+	-$(RM) Exception_Entry.elf Exception_Entry.list Exception_Entry.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
