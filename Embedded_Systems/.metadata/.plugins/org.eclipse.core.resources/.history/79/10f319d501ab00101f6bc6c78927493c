@@ -2,26 +2,20 @@
 // connected to PORT A PIN 5
 
 //use the user manual->Block diagram & Memory map->fetch the base addresses
-#define PERIPH_BASE 				(0x40000000UL)	//All STM32 peripheral registers start from address  0x4000_0000  according to the memory map
+#define PERIPH_BASE 				(0x40000000UL)
 //0x40020000UL is LED AND AHB1 ADDRESS
 #define AHB1PERIPH_OFFSET 			(0x00020000UL)
-#define AHB1PERIPH_BASE				(PERIPH_BASE+AHB1PERIPH_OFFSET)	//GPIO peripherals are on the AHB1 bus, which controls high-speed peripherals like GPIOA, GPIOB, etc
+#define AHB1PERIPH_BASE				(PERIPH_BASE+AHB1PERIPH_OFFSET)
 #define GPIOA_OFFSET				(0x0000U)	//same as 0x0000 0000 0000 0000, IT IS 0000 FROM AHB1
-#define GPIOA_BASE					(AHB1PERIPH_BASE + GPIOA_OFFSET)	//gives the starting address of GPIOA registers.
+#define GPIOA_BASE					(AHB1PERIPH_BASE + GPIOA_OFFSET)
 
 //LET US NOW ENABLE CLOCK, IT IS RCC
 #define RCC_OFFSET 					(0X3800UL)
-#define RCC_BASE					(AHB1PERIPH_BASE + RCC_OFFSET)	//refers to the Reset and Clock Control (RCC) register block
+#define RCC_BASE					(AHB1PERIPH_BASE + RCC_OFFSET)
 
 //REGISTER ADDRESS, USE REFERENCE MANUAL AND SEARCH ahb1en,
 // We are going to locate the addresses of the registers within the peripherals
 #define AHB1EN_R_OFFSET				(0x30UL)
-
-/*Enable clock for GPIOA
-	•	 RCC_AHB1EN_R  is at  RCC_BASE + 0x30UL .
-	•	 RCC_AHB1EN_R |= GPIOAEN;  sets bit 0 of the RCC AHB1 clock enable register, activating the GPIOA peripheral clock. Without enabling this, access to GPIOA would not work
-/
-*/
 #define RCC_AHB1EN_R				(*(volatile unsigned int *)(RCC_BASE + AHB1EN_R_OFFSET))
 
 #define MODE_R_OFFSET				(0X00UL)

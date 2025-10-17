@@ -20,9 +20,10 @@
 /*Enable clock for GPIOA
 	•	 RCC_AHB1EN_R  is at  RCC_BASE + 0x30UL .
 	•	 RCC_AHB1EN_R |= GPIOAEN;  sets bit 0 of the RCC AHB1 clock enable register, activating the GPIOA peripheral clock. Without enabling this, access to GPIOA would not work
-/
+
 */
 #define RCC_AHB1EN_R				(*(volatile unsigned int *)(RCC_BASE + AHB1EN_R_OFFSET))
+
 
 #define MODE_R_OFFSET				(0X00UL)
 #define GPIOA_MODE_R				(*(volatile unsigned int *)(GPIOA_BASE + MODE_R_OFFSET))

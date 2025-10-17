@@ -35,6 +35,14 @@
 #define PIN5						(1U<<5)
 #define LED_PIN						PIN5
 
+typedef struct
+{
+	volatile uint32_t MODER;
+	volatile uint32_t DUMMY[4];
+	volatile uint32_t ODR;
+
+}GPIO;
+
 
 int main(void)
 {
