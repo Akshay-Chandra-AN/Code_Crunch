@@ -1,0 +1,7 @@
+//where is led connected? what is the port? and pin? AND push button
+
+int main(void)
+{
+
+	for(;;);
+}

@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=macosx
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World.elf,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Interrupt_priority,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:USART3_int_pend Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:stack,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:fault_gen
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World.elf,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World.elf/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:001_Hello_World.elf/activeLaunchTarget=null\:---
@@ -12,6 +12,7 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Hello_world/activeLaunchMode=de
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Hello_world/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Hello_world_1/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Interrupt_priority/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:USART3_int_pend\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:bit_banding/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:fault_gen/activeLaunchMode=debug
@@ -19,5 +20,6 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world_itm/activeLaunchMod
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:hello_world_itm/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:inline/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:operation_mode/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:svc_isr/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:001_Hello_World.elf/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:001_Hello_World.elf/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
